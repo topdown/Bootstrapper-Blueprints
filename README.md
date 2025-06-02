@@ -121,7 +121,7 @@ Brief description of what this blueprint creates.
 
 ## Project Structure
 
-```
+```bash
 project-name/
 ├── src/
 ├── tests/
