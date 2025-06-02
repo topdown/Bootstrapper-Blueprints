@@ -1,0 +1,27 @@
+{
+  "name": "Static Website Starter",
+  "description": "A basic static website template with HTML, CSS, and JavaScript structure",
+  "tags": [
+    "web",
+    "static",
+    "html",
+    "css",
+    "javascript",
+    "starter"
+  ],
+  "files": {
+    "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>{{PROJECT_NAME}}</title>\n    <link rel=\"stylesheet\" href=\"css/styles.css\">\n</head>\n<body>\n    <header>\n        <h1>Welcome to {{PROJECT_NAME}}</h1>\n    </header>\n    \n    <main>\n        <p>This is a starter template for your static website.</p>\n        <p>Created on {{DATE}}</p>\n    </main>\n    \n    <footer>\n        <p>&copy; {{YEAR}} {{PROJECT_NAME}}. All rights reserved.</p>\n    </footer>\n    \n    <script src=\"js/scripts.js\"></script>\n</body>\n</html>",
+    "css/styles.css": "/* {{PROJECT_NAME}} Styles */\n/* Created: {{DATE}} */\n\n* {\n    margin: 0;\n    padding: 0;\n    box-sizing: border-box;\n}\n\nbody {\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\n    line-height: 1.6;\n    color: #333;\n    background-color: #f4f4f4;\n}\n\nheader {\n    background: #333;\n    color: white;\n    text-align: center;\n    padding: 1rem 0;\n}\n\nheader h1 {\n    margin: 0;\n}\n\nmain {\n    max-width: 800px;\n    margin: 2rem auto;\n    padding: 0 1rem;\n    background: white;\n    border-radius: 8px;\n    box-shadow: 0 2px 10px rgba(0,0,0,0.1);\n    padding: 2rem;\n}\n\nfooter {\n    text-align: center;\n    padding: 1rem;\n    background: #333;\n    color: white;\n    margin-top: 2rem;\n}",
+    "js/scripts.js": "// {{PROJECT_NAME}} JavaScript\n// Created: {{DATE}}\n\nconsole.log('Welcome to {{PROJECT_NAME}}!');\n\n// Wait for DOM to be fully loaded\ndocument.addEventListener('DOMContentLoaded', function() {\n    console.log('{{PROJECT_NAME}} is ready!');\n    \n    // Add any initialization code here\n    initializeProject();\n});\n\nfunction initializeProject() {\n    // Add your project initialization logic here\n    console.log('Project initialized successfully!');\n}",
+    "README.md": "# {{PROJECT_NAME}}\n\nA static website created from the Bootstrapper template.\n\n## Getting Started\n\n1. Open `index.html` in your browser\n2. Start editing the files to customize your website\n3. Add your content to the HTML file\n4. Style your website in `css/styles.css`\n5. Add interactivity with `js/scripts.js`\n\n## File Structure\n\n```\n{{PROJECT_NAME}}/\n├── index.html          # Main HTML file\n├── css/\n│   └── styles.css     # Stylesheets\n├── js/\n│   └── scripts.js     # JavaScript files\n├── img/               # Images folder\n└── README.md          # This file\n```\n\n## Development\n\nThis is a simple static website. You can:\n\n- Open `index.html` directly in your browser\n- Use a local development server like Live Server in VS Code\n- Deploy to any static hosting service\n\n## Customization\n\n- Edit `index.html` to change the structure\n- Modify `css/styles.css` to update the styling\n- Add functionality in `js/scripts.js`\n- Place images in the `img/` folder\n\nHappy coding! 🚀",
+    "css/index.html": "<!-- Prevent directory listing -->\n<meta http-equiv=\"refresh\" content=\"0; url=../index.html\" />",
+    "js/index.html": "<!-- Prevent directory listing -->\n<meta http-equiv=\"refresh\" content=\"0; url=../index.html\" />",
+    "img/index.html": "<!-- Prevent directory listing -->\n<meta http-equiv=\"refresh\" content=\"0; url=../index.html\" />",
+    ".gitignore": "# OS generated files\n.DS_Store\n.DS_Store?\n._*\n.Spotlight-V100\n.Trashes\nehthumbs.db\nThumbs.db\n\n# Editor files\n.vscode/\n.idea/\n*.swp\n*.swo\n*~\n\n# Logs\n*.log\nnpm-debug.log*\nyarn-debug.log*\nyarn-error.log*\n\n# Dependencies\nnode_modules/\n\n# Build outputs\ndist/\nbuild/"
+  },
+  "folders": [
+    "css",
+    "img",
+    "js"
+  ]
+}
