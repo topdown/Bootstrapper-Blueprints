@@ -95,7 +95,7 @@ Use these variables in your file content for dynamic replacement:
 
 Each blueprint should include a README.md with:
 
-```markdown
+````markdown
 # Blueprint Name
 
 Brief description of what this blueprint creates.
@@ -121,7 +121,7 @@ Brief description of what this blueprint creates.
 
 ## Project Structure
 
-```bash
+```
 project-name/
 ├── src/
 ├── tests/
@@ -138,7 +138,7 @@ Explain how users can modify the generated project to fit their needs.
 - Link to relevant documentation
 - Similar blueprints
 - Useful resources
-```
+````
 
 ### Blueprint Guidelines
 
