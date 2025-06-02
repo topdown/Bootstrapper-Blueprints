@@ -2,6 +2,8 @@
 
 A community repository of project blueprints for the [Bootstrapper VS Code Extension](https://github.com/topdown/bootstrapper).
 
+That plugin and these blueprints should work in all VSCode flavored editors. Cursor, WindSurf, etc...
+
 ## What are Bootstrapper Blueprints?
 
 Bootstrapper blueprints are project templates that allow you to quickly scaffold new projects with predefined file structures, code, and configurations. Each blueprint contains:
