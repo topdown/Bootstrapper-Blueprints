@@ -181,7 +181,7 @@ Before submitting, ensure your blueprint:
 ## Available Blueprints
 
 ### Web Development
-- **[Static Website Starter](blueprints/Assets-Example/)** - Basic HTML, CSS, and JavaScript template for static websites
+- **[Static Website Starter](blueprints/Static-Website-Starter/)** - Basic HTML, CSS, and JavaScript template for static websites
 
 ### APIs & Backend
 - Coming soon...
