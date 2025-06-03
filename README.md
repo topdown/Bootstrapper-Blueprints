@@ -97,7 +97,22 @@ Use these variables in your file content for dynamic replacement:
 
 Each blueprint should include a README.md with:
 
+The meta at the top is very important for the Blueprints webpage.
+__Example:__
+```html
+<!--
+title: Static Website Starter
+description: A simple, clean starter template for static websites with HTML, CSS, and JavaScript
+tags: html, css, javascript, static, website, starter
+-->
+```
+
 ````markdown
+<!--
+title: Blueprint Name
+description: Blueprint description
+tags: comma separated tags
+-->
 # Blueprint Name
 
 Brief description of what this blueprint creates.
