@@ -1,3 +1,8 @@
+<!--
+title: Static Website Starter
+description: A simple, clean starter template for static websites with HTML, CSS, and JavaScript
+tags: html, css, javascript, static, website, starter
+-->
 # Static Website Starter
 
 A basic static website template with HTML, CSS, and JavaScript structure. Perfect for creating simple websites, landing pages, or prototypes.

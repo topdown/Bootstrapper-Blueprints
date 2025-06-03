@@ -190,34 +190,61 @@
                 const response = await fetch('https://api.github.com/repos/topdown/Bootstrapper-Blueprints/contents/blueprints');
                 const folders = await response.json();
                 
+                console.log('API Response:', folders); // Debug log
+                
+                if (!Array.isArray(folders)) {
+                    throw new Error('Invalid API response format');
+                }
+                
                 const blueprintPromises = folders
                     .filter(item => item.type === 'dir')
                     .map(async folder => {
                         try {
                             const readmeResponse = await fetch(`https://api.github.com/repos/topdown/Bootstrapper-Blueprints/contents/blueprints/${folder.name}/README.md`);
+                            
+                            if (!readmeResponse.ok) {
+                                throw new Error(`README fetch failed: ${readmeResponse.status}`);
+                            }
+                            
                             const readmeData = await readmeResponse.json();
-                            const readmeContent = atob(readmeData.content);
+                            console.log(`README data for ${folder.name}:`, readmeData); // Debug log
+                            
+                            if (!readmeData.content) {
+                                throw new Error('No content in README response');
+                            }
+                            
+                            const readmeContent = atob(readmeData.content.replace(/\s/g, ''));
+                            console.log(`README content for ${folder.name}:`, readmeContent.substring(0, 200)); // Debug log
+                            
+                            // Parse metadata from HTML comments
+                            const metadata = parseMetadata(readmeContent);
                             
                             // Parse README for title and description
                             const lines = readmeContent.split('\n').filter(line => line.trim());
-                            const title = lines[0]?.replace(/^#\s*/, '') || folder.name;
-                            const description = lines.find(line => line.trim() && !line.startsWith('#') && !line.startsWith('##')) || 'No description available';
+                            const title = metadata.title || lines.find(line => line.startsWith('#'))?.replace(/^#\s*/, '') || folder.name;
+                            const description = metadata.description || 
+                                lines.find(line => line.trim() && !line.startsWith('#') && !line.startsWith('<!--') && !line.startsWith('-->')) || 
+                                `A ${folder.name.replace(/-/g, ' ').toLowerCase()} blueprint`;
+                            
+                            const tags = metadata.tags ? 
+                                metadata.tags.split(',').map(tag => tag.trim()) : 
+                                extractTags(folder.name, readmeContent);
                             
                             return {
                                 name: folder.name,
                                 title: title,
                                 description: description,
                                 path: folder.html_url,
-                                tags: extractTags(folder.name, readmeContent)
+                                tags: tags
                             };
                         } catch (error) {
                             console.error(`Error loading ${folder.name}:`, error);
                             return {
                                 name: folder.name,
-                                title: folder.name,
-                                description: 'Unable to load description',
+                                title: folder.name.replace(/-/g, ' '),
+                                description: `A ${folder.name.replace(/-/g, ' ').toLowerCase()} blueprint template`,
                                 path: folder.html_url,
-                                tags: []
+                                tags: extractTags(folder.name, '')
                             };
                         }
                     });
@@ -229,6 +256,27 @@
                 console.error('Error loading blueprints:', error);
                 document.getElementById('loading').innerHTML = 'Error loading blueprints. Please try again later.';
             }
+        }
+        
+        function parseMetadata(content) {
+            const metadata = {};
+            const metadataMatch = content.match(/<!--\s*([\s\S]*?)\s*-->/);
+            
+            if (metadataMatch) {
+                const metadataContent = metadataMatch[1];
+                const lines = metadataContent.split('\n');
+                
+                lines.forEach(line => {
+                    const colonIndex = line.indexOf(':');
+                    if (colonIndex > 0) {
+                        const key = line.substring(0, colonIndex).trim();
+                        const value = line.substring(colonIndex + 1).trim();
+                        metadata[key] = value;
+                    }
+                });
+            }
+            
+            return metadata;
         }
         
         function extractTags(name, content) {
